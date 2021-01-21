@@ -1,5 +1,6 @@
 //Create here the cards
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 export const PlanetCard = props => {
 	return (
@@ -8,12 +9,15 @@ export const PlanetCard = props => {
 			<div className="card-body">
 				<h5 className="card-title">{props.planet.name}</h5>
 				<p className="card-text">
-					Some quick example text to build on the card title and make up the bulk of the cards content.
+					Terrain: {props.planet.terrain} <br />
+					Population: {props.planet.population}
 				</p>
 				<div className="d-flex justify-content-between">
-					<a href="#" className="btn btn-outline-primary">
-						Learn More!
-					</a>
+					<Link to={{ pathname: `/pladetails/${props.planet.name}`, state: props.planet }}>
+						<span href="#" className="btn btn-outline-primary">
+							Learn More!
+						</span>
+					</Link>
 					<a href="#" className="btn btn-outline-danger">
 						Fav
 					</a>

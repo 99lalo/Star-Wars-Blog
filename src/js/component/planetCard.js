@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 export const PlanetCard = props => {
 	return (
-		<div className="card m-3" style={{ width: "18rem" }}>
-			<img className="card-img-top" src="..." alt="Card image cap" />
+		<div className="card m-3 bg-dark">
+			<img
+				className="card-img-top"
+				src="https://atlas-content-cdn.pixelsquid.com/stock-images/death-star-do2Z7l0-600.jpg"
+				alt="Card image cap"
+			/>
 			<div className="card-body">
 				<h5 className="card-title">{props.planet.name}</h5>
 				<p className="card-text">
@@ -19,7 +23,7 @@ export const PlanetCard = props => {
 						</span>
 					</Link>
 					<a href="#" className="btn btn-outline-danger">
-						Fav
+						<i className="far fa-heart" />
 					</a>
 				</div>
 			</div>

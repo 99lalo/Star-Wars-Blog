@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 export const CharacterCard = props => {
 	return (
-		<div className="card m-3 " style={{ width: "18rem" }}>
-			<img className="card-img-top" src="..." alt="Card image cap" />
+		<div className="card m-3 bg-dark">
+			<img
+				className="card-img-top"
+				src="https://cdn.pixabay.com/photo/2016/03/27/07/26/darth-vader-1282288_960_720.jpg"
+				alt="Card image cap"
+			/>
 			<div className="card-body">
 				<h5 className="card-title">{props.character.name}</h5>
 				<p className="card-text">
@@ -17,13 +21,13 @@ export const CharacterCard = props => {
 					{props.character.eye_color}
 				</p>
 				<div className="d-flex justify-content-between">
-					<Link to={`/chardetails/${props.character.name}`}>
+					<Link to={{ pathname: `/chardetails/${props.character.name}`, state: props.character }}>
 						<a href="#" className="btn btn-outline-primary">
 							Learn More!
 						</a>
 					</Link>
 					<a href="#" className="btn btn-outline-danger">
-						Fav
+						<i className="far fa-heart" />
 					</a>
 				</div>
 			</div>

@@ -3,11 +3,11 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import { CharacterCard } from "../component/characterCard";
 import { PlanetCard } from "../component/planetCard";
-import { StarshipsCard } from "../component/starshipCard";
+import { StarshipCard } from "../component/starshipCard";
 export const Home = () => {
 	const [characters, setCharacters] = useState([]);
 	const [planets, setPlanets] = useState([]);
-	const [starships, setStarships] = useState([]);
+	const [starship, setStarship] = useState([]);
 	useEffect(() => {
 		fetch(`https://swapi.dev/api/people/`)
 			.then(function(response) {
@@ -46,7 +46,7 @@ export const Home = () => {
 				return response.json();
 			})
 			.then(function(responseAsJson) {
-				console.log(responseAsJson);
+				setStarship(responseAsJson.results);
 			})
 			.catch(function(error) {
 				console.log("Looks like there was a problem: \n", error);
@@ -57,7 +57,7 @@ export const Home = () => {
 		<div className="container-fluid mt-5">
 			<div>
 				<h1>Characters</h1>
-				<div className="d-flex overflow-auto">
+				<div className="scroller">
 					{characters.map((value, index) => {
 						return <CharacterCard key={index} character={value} />;
 					})}
@@ -65,7 +65,7 @@ export const Home = () => {
 			</div>
 			<div>
 				<h1>Planets</h1>
-				<div className="d-flex overflow-auto">
+				<div className="scroller">
 					{planets.map((value, index) => {
 						return <PlanetCard key={index} planet={value} />;
 					})}
@@ -73,9 +73,9 @@ export const Home = () => {
 			</div>
 			<div>
 				<h1>Starships</h1>
-				<div className="d-flex overflow-auto">
-					{starships.map((value, index) => {
-						return <StarshipsCard key={index} starship={value} />;
+				<div className="scroller">
+					{starship.map((value, index) => {
+						return <StarshipCard key={index} starship={value} />;
 					})}
 				</div>
 			</div>

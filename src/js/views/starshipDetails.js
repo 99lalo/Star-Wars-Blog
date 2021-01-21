@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const PlanetsDetails = props => {
+export const StarshipDetails = props => {
 	console.log(props);
 
 	return (
 		<div className="container">
 			<div className="d-flex">
 				<img
-					src="https://atlas-content-cdn.pixelsquid.com/stock-images/death-star-do2Z7l0-600.jpg"
+					src="https://cdn.pixabay.com/photo/2015/12/11/22/25/star-wars-1088872_960_720.jpg"
 					alt="Card image cap"
 					className="detailsImage m-3"
 				/>
@@ -27,19 +27,19 @@ export const PlanetsDetails = props => {
 			<hr />
 			<div className="d-flex  justify-content-between">
 				<div className="detail">
-					<h3>Climate</h3> <br /> <h6>{props.location.state.climate}</h6>
+					<h3>Cargo Capacity</h3> <br /> <h6>{props.location.state.cargo_capacity}</h6>
 				</div>
 				<div className="detail">
-					<h3>Diameter</h3> <br /> <h6>{props.location.state.diameter}</h6>
+					<h3>Cost in Credits</h3> <br /> <h6>{props.location.state.cost_in_credits}</h6>
 				</div>
 				<div className="detail">
-					<h3>Population</h3> <br /> <h6>{props.location.state.population}</h6>
+					<h3>Length</h3> <br /> <h6>{props.location.state.length}</h6>
 				</div>
 				<div className="detail">
-					<h3>Terrain</h3> <br /> <h6>{props.location.state.terrain}</h6>
+					<h3>Manufacturer</h3> <br /> <h6>{props.location.state.manufacturer}</h6>
 				</div>
 				<div className="detail">
-					<h3>Gravity</h3> <br /> <h6>{props.location.state.gravity}</h6>
+					<h3>Model</h3> <br /> <h6>{props.location.state.model}</h6>
 				</div>
 			</div>
 			<br />
@@ -52,6 +52,6 @@ export const PlanetsDetails = props => {
 	);
 };
 
-PlanetsDetails.propTypes = {
+StarshipDetails.propTypes = {
 	location: PropTypes.object
 };

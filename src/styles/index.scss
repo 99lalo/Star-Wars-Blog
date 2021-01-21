@@ -1,3 +1,45 @@
 /* 
     General Styles
 */
+.scroller{
+    overflow-x: scroll;
+	overflow-y: hidden;
+    display: flex;
+    background-image: url("https://cdn.pixabay.com/photo/2016/09/08/12/00/stars-1654074_960_720.jpg");
+}
+.card{
+    width: 18rem;
+    flex: 0 0 auto;
+}
+body{
+    background-image: url("https://cdn.pixabay.com/photo/2016/09/08/12/00/stars-1654074_960_720.jpg");
+    color: white;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(70, 68, 68);
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(34, 34, 34); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0); 
+}
+.detailsImage{
+    width: 50%;
+    height: 50%;
+}
+hr{
+    border: 1px solid white;
+}
+.detail{
+    text-align: center;
+}

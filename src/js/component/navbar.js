@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-light mb-3" style={{ backgroundColor: "black" }}>
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">
 					<img
-						src="https://download.logo.wine/logo/Star_Wars/Star_Wars-Logo.wine.png"
+						src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1024px-Star_Wars_Logo.svg.png"
 						style={{ width: "5em", height: "3em" }}
 						alt="Card image cap"
 					/>
@@ -15,7 +15,7 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto">
 				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
+					<button className="btn btn-dark">Favorites</button>
 				</Link>
 			</div>
 		</nav>

@@ -7,7 +7,7 @@ export const PlanetCard = props => {
 		<div className="card m-3 bg-dark">
 			<img
 				className="card-img-top"
-				src="https://atlas-content-cdn.pixelsquid.com/stock-images/death-star-do2Z7l0-600.jpg"
+				src="https://cdn.vox-cdn.com/thumbor/vg3R3bZvBaxxJmq7clMKs1gfP3w=/0x6:1000x673/1200x800/filters:focal(0x6:1000x673)/cdn.vox-cdn.com/imported_assets/1388389/death-star.jpg"
 				alt="Card image cap"
 			/>
 			<div className="card-body">

@@ -10,7 +10,7 @@ export const PlanetsDetails = props => {
 		<div className="container">
 			<div className="d-flex">
 				<img
-					src="https://atlas-content-cdn.pixelsquid.com/stock-images/death-star-do2Z7l0-600.jpg"
+					src="https://cdn.vox-cdn.com/thumbor/vg3R3bZvBaxxJmq7clMKs1gfP3w=/0x6:1000x673/1200x800/filters:focal(0x6:1000x673)/cdn.vox-cdn.com/imported_assets/1388389/death-star.jpg"
 					alt="Card image cap"
 					className="detailsImage m-3"
 				/>

@@ -21,13 +21,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			addFavorite: newItem => {
 				var storeCopy = getStore();
-				var checkItem = storeCopy.favorites.find(() => {
-					return newItem == storeCopy;
+				var checkItem = storeCopy.favorites.find(value => {
+					return value == newItem;
 				});
-				if (newItem != checkItem) {
-					var newFavorites = storeCopy.favorites.concat();
+				if (checkItem == undefined) {
+					var newFavorites = storeCopy.favorites.concat(newItem);
+					setStore({ favorites: newFavorites });
 				}
-				setStore({ favorites: newFavorites });
 			},
 			deleteFavorite: deletedItem => {
 				var storeCopy = getStore();

@@ -3,6 +3,10 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 export const PlanetCard = props => {
+	const { store, actions } = useContext(Context);
+	let heart = store.favorites.find((value, index) => {
+		return value == props.planet.name;
+	});
 	return (
 		<div className="card m-3 bg-dark">
 			<img
@@ -22,14 +26,23 @@ export const PlanetCard = props => {
 							Learn More!
 						</span>
 					</Link>
-					<a href="#" className="btn btn-outline-danger">
-						<i className="far fa-heart" />
-					</a>
+					<button
+						href="#"
+						className="btn btn-outline-danger"
+						onClick={e =>
+							heart == undefined
+								? props.addFavorites(props.planet.name)
+								: props.deleteFavorite(props.planet.name)
+						}>
+						<i className={heart == undefined ? "far fa-heart" : "fas fa-heart"} />
+					</button>
 				</div>
 			</div>
 		</div>
 	);
 };
 PlanetCard.propTypes = {
-	planet: PropTypes.object
+	planet: PropTypes.object,
+	addFavorites: PropTypes.func,
+	deleteFavorite: PropTypes.func
 };

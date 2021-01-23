@@ -13,7 +13,14 @@ export const Home = () => {
 				<h1>Characters</h1>
 				<div className="scroller">
 					{store.characters.map((value, index) => {
-						return <CharacterCard key={index} character={value} />;
+						return (
+							<CharacterCard
+								key={index}
+								character={value}
+								addFavorites={actions.addFavorite}
+								deleteFavorite={actions.deleteFavorite}
+							/>
+						);
 					})}
 				</div>
 			</div>
@@ -21,7 +28,14 @@ export const Home = () => {
 				<h1>Planets</h1>
 				<div className="scroller">
 					{store.planets.map((value, index) => {
-						return <PlanetCard key={index} planet={value} />;
+						return (
+							<PlanetCard
+								key={index}
+								planet={value}
+								addFavorites={actions.addFavorite}
+								deleteFavorite={actions.deleteFavorite}
+							/>
+						);
 					})}
 				</div>
 			</div>
@@ -29,7 +43,14 @@ export const Home = () => {
 				<h1>Starships</h1>
 				<div className="scroller">
 					{store.starships.map((value, index) => {
-						return <StarshipCard key={index} starship={value} />;
+						return (
+							<StarshipCard
+								key={index}
+								starship={value}
+								addFavorites={actions.addFavorite}
+								deleteFavorite={actions.deleteFavorite}
+							/>
+						);
 					})}
 				</div>
 			</div>

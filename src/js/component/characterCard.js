@@ -1,5 +1,6 @@
 //Create here the cards
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 export const CharacterCard = props => {
@@ -13,18 +14,15 @@ export const CharacterCard = props => {
 			<div className="card-body">
 				<h5 className="card-title">{props.character.name}</h5>
 				<p className="card-text">
-					Gender:
-					{props.character.gender} <br />
-					Hair Color:
-					{props.character.hair_color} <br />
-					Eye-Color:
-					{props.character.eye_color}
+					Gender: {props.character.gender} <br />
+					Hair Color: {props.character.hair_color} <br />
+					Eye-Color: {props.character.eye_color}
 				</p>
 				<div className="d-flex justify-content-between">
 					<Link to={{ pathname: `/chardetails/${props.character.name}`, state: props.character }}>
-						<a href="#" className="btn btn-outline-primary">
+						<button href="#" className="btn btn-outline-primary">
 							Learn More!
-						</a>
+						</button>
 					</Link>
 					<a href="#" className="btn btn-outline-danger">
 						<i className="far fa-heart" />

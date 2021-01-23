@@ -1,5 +1,5 @@
-//Create here the cards
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 export const StarshipCard = props => {
@@ -13,10 +13,8 @@ export const StarshipCard = props => {
 			<div className="card-body">
 				<h5 className="card-title">{props.starship.name}</h5>
 				<p className="card-text">
-					Model:
-					{props.starship.model} <br />
-					Cost:
-					{props.starship.cost_in_credits}
+					Model: {props.starship.model} <br />
+					Cost: {props.starship.cost_in_credits}
 				</p>
 				<div className="d-flex justify-content-between">
 					<Link to={{ pathname: `/stardetails/${props.starship.name}`, state: props.starship }}>

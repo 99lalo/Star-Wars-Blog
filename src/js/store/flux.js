@@ -1,6 +1,10 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			favorites: [],
+			characters: [],
+			planets: [],
+			starships: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -15,14 +19,70 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			addFavorite: newItem => {
+				var storeCopy = getStore();
+				var checkItem = storeCopy.favorites.find(() => {
+					return newItem == storeCopy;
+				});
+				if (newItem != checkItem) {
+					var newFavorites = storeCopy.favorites.concat();
+				}
+				setStore({ favorites: newFavorites });
+			},
+			deleteFavorite: deletedItem => {
+				var storeCopy = getStore();
+				var newFavorites = storeCopy.favorites.filter((value, index) => {
+					return value != deletedItem;
+				});
+				setStore({ favorites: newFavorites });
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+				fetch(`https://swapi.dev/api/people/`)
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						// Read the response as json.
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ characters: responseAsJson.results });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+				fetch(`https://swapi.dev/api/planets/`)
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						// Read the response as json.
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ planets: responseAsJson.results });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+				fetch(`https://swapi.dev/api/starships/`)
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						// Read the response as json.
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ starships: responseAsJson.results });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			},
 			changeColor: (index, color) => {
 				//get the store

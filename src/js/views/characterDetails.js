@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const CharacterDetails = props => {
-	console.log(props);
 	return (
 		<div className="container">
 			<div className="d-flex">

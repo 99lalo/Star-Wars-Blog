@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+	var pathname = "";
 	return (
 		<nav className="navbar navbar-light mb-3" style={{ backgroundColor: "black" }}>
 			<Link to="/">
@@ -28,9 +29,32 @@ export const Navbar = () => {
 					</button>
 					<div className={store.favorites.length > 0 ? "dropdown-menu show bg-dark text-white" : "d-non"}>
 						{store.favorites.map((value, index) => {
+							let info = store.characters.filter((char, index) => {
+								pathname = `/chardetails/${value}`;
+								return char.name == value;
+							});
+							if (info == undefined) {
+								info = store.planets.filter((char, index) => {
+									pathname = `/pladetails/${value}`;
+									return char.name == value;
+								});
+								if (info == undefined) {
+									info = store.starships.filter((char, index) => {
+										pathname = `/stardetails/${value}`;
+										return char.name == value;
+									});
+								}
+							}
 							return (
 								<li key={index} className="dropdown-item bg-dark text-white">
-									{value}{" "}
+									<Link
+										className="text-white"
+										to={{
+											pathname: pathname,
+											state: info[0]
+										}}>
+										{value}
+									</Link>
 									<i
 										className="fas fa-trash  float-right"
 										onClick={e => actions.deleteFavorite(value)}
@@ -44,11 +68,3 @@ export const Navbar = () => {
 		</nav>
 	);
 };
-/*						{store.favorites.map((value, index) => {
-							return (
-								<a key={index} className="dropdown-item disabled" href="#">
-									{value}
-									<i className="fas fa-trash" onClick={e => actions.deleteFavorite(value)} />
-								</a>
-							);
-						})} */

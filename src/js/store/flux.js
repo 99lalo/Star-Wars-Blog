@@ -97,6 +97,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			checkTypeofCard: value => {
+				const store = getStore();
+				let path = "";
+				let typeofCard = {};
+				let checkCharacters = store.characters.filter((char, index) => {
+					return char.name == value;
+				});
+				let checkPlanets = store.planets.filter((char, index) => {
+					return char.name == value;
+				});
+				let checkStarships = store.starships.filter((char, index) => {
+					return char.name == value;
+				});
+				if (checkCharacters[0] != undefined && checkPlanets[0] == undefined && checkStarships[0] == undefined) {
+					path = `/chardetails/${value}`;
+					typeofCard = checkCharacters[0];
+				} else if (
+					checkCharacters[0] == undefined &&
+					checkPlanets[0] != undefined &&
+					checkStarships[0] == undefined
+				) {
+					path = `/pladetails/${value}`;
+					typeofCard = checkPlanets[0];
+				} else if (
+					checkCharacters[0] == undefined &&
+					checkPlanets[0] == undefined &&
+					checkStarships[0] != undefined
+				) {
+					path = `/stardetails/${value}`;
+					typeofCard = checkStarships[0];
+				}
+				return { cardInfo: typeofCard, pathname: path };
 			}
 		}
 	};

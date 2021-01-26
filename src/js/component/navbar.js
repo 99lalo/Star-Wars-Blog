@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	var pathname = "";
 	return (
 		<nav className="navbar navbar-light mb-3" style={{ backgroundColor: "black" }}>
 			<Link to="/">
@@ -29,29 +28,14 @@ export const Navbar = () => {
 					</button>
 					<div className={store.favorites.length > 0 ? "dropdown-menu show bg-dark text-white" : "d-non"}>
 						{store.favorites.map((value, index) => {
-							let info = store.characters.filter((char, index) => {
-								pathname = `/chardetails/${value}`;
-								return char.name == value;
-							});
-							if (info == undefined) {
-								info = store.planets.filter((char, index) => {
-									pathname = `/pladetails/${value}`;
-									return char.name == value;
-								});
-								if (info == undefined) {
-									info = store.starships.filter((char, index) => {
-										pathname = `/stardetails/${value}`;
-										return char.name == value;
-									});
-								}
-							}
+							let info = actions.checkTypeofCard(value);
 							return (
 								<li key={index} className="dropdown-item bg-dark text-white">
 									<Link
 										className="text-white"
 										to={{
-											pathname: pathname,
-											state: info[0]
+											pathname: info.pathname,
+											state: info.cardInfo
 										}}>
 										{value}
 									</Link>
